@@ -1,0 +1,106 @@
+Ma trận game là 30x20
+Ăn 20 quả táo sẽ qua màn.
+Có 6 level.
+(Có thanh cuộn để thay đổi tốc độ chơi của rắn.)
+Có nút âm thanh. tắt sẽ tắt âm thanh, bật sẽ bật âm thanh.
+Có nút cài đặt. Nút cài đặt này khi ấn vào sẽ hiện 1 thẻ div có tác dụng là: Thay đổi tốc độ rắn, màn mới, tiếp tục, reset, màn hình chính
+Lv1: Không bức tường, ăn 20 quả táo là win. Done!
+Lv2: Có bức tường, ăn 20 quả táo là win. Done!
+Lv3: Có bức tường nhưng simple, ăn 20 quả táo trong 1 khoảng thời gian, không kịp thời gian thì lose. Done!
+Lv4: Có bức tường, con rắn phải ăn táo trong 1 khoảng thời gian xác định, nếu không con rắn sẽ đói là lose. Map sẽ rắc rối hơn, khó di chuyển hơn. Done!
+Lv5: Trong 1 khoảng thời gian, con rắn phải hoàn thành 1 nhiệm vụ của màn chơi(ăn 2 cái gì đó), Thời gian đếm ngược. phải ăn 2 quả táo thì
+mới xuất hiện các vật phẩm đó. Done!
+Lv6: Có bước tường, phải ăn 20 quả táo, (thời gian quả rán đói...), thời gian đếm ngược, ăn vật phẩm.
++ăn 10 quả táo
++ăn vật phẩm
++thời gian đếm ngược đói
++thời gian game
++map khó hơn
+Khi ăn đủ 10 quả táo: sẽ mở cổng win, tuy nhiên nếu chưa đủ vật phẩm cũng sẽ lose. 
+Done!
+
+giờ làm button:
+-setting:
+set header
+settingDiv, overlay : block (hiện div setting)
++clear Interval
++cho các biến iterval = null
++isDraw = false (để không vẽ tiếp tục)
+<Level6 nextbutton sẽ bị disabled>
+<Khi win continue button sẽ bị disabled>
+
+-continue:
+settingDiv, overlay : none (ẩn div setting)
+isDraw = true (de tiep tuc ve canvas)
+start()
+
+-nextlevel:
+settingDiv, overlay : none (ẩn div setting)
+timeFruitsLabel(ẩn, nếu như còn time hiển thị mà qua màn)
+isDraw = true (điều kiện vẽ)
+continueButton disabled=false (do nếu win game qua màn mới thì set lại continue)
+level 2 qua 3: hiển thị thời gian game (labeltimegame : inline)
+level 3 qua 4: ẩn thời gian game, hiện thời gian sống của snake (labeltimegame:none, timeContainer: inline)
+level 4 qua 5: ẩn thời gian sống của snake (timeContainer:none)
+level 5 qua 6: hiển thị lại score (score : inline)
+
+Function start: dem thoi gian 3210 de bat dau game{
+	use setInterval cua bien countIntervalId.
+	use count de dem thoi gian, 3-2-1-0
+	neu count = 0 thi clear countIntervalId, update count=3(de su dung cho lan sau)
+	bat dau function gameLoop()	
+}
+
+Funcition draw(): Ve matrix, ran, thuc an,...
+
+Function gameLoop(): hoat dong cua game{
+	dung bien isDraw de hoat dong cua game. if(true) continue(timeout=setTimeout de tiep tuc ve game) else stop;
+	dung function draw() de ve len canvas
+}
+Function countDown(): Dem thoi gian cua game
+
+
+Có 5 div hiển thị:
+1. Số lượng táo - score
+2. Thời gian game - labeltimegame
+3. Thời gian đói của rắn - timeContainer
+4. Vật phẩm - labelFruits
+5. Thời gian vật phẩm - timeFruitsLabel
+
+~Tạo 1 text hiển thị level{
++title level: khi join boardgame sẽ hiện
++trở ra trang chủ sẽ ẩn. 
+} done!
+~Tạo 1 label hiển thị luật chơi của level đó\ done!
+
+
+
+
+
+Thời gian tồn tại vật phẩm: giảm xuống 7s
+speed: 100, 90, 80, 70, 60 -> 5 speeds
+x thuộc {1 2 3 4 5} 
+công thức là speed = 110-x*10; ok
+done!
+
+âm thanh game over, game win
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

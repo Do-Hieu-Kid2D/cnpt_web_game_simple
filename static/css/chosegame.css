@@ -1,0 +1,130 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  header {
+    background-color: #0f5a84;
+    background-image: linear-gradient(109deg, #0f5a84 0%, #298277 100%);
+    color: #fff;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header img {
+    max-height: 50px;
+  }
+
+  header h1 {
+    margin: 0;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .rowgame {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px; /* Khoảng cách giữa các hàng */
+  }
+
+  .card {
+    width: 300px;
+    min-height: 480px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .card img {
+    height: 300px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover; 
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển động cho thuộc tính transform */
+
+  }
+
+  .card-content {
+    min-height: 150px;
+    margin: 20px;
+    /* margin-bottom: 10px; */
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .card-description {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  .chua_btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100px;
+    text-align: center;
+    background-color: #0f5a84;
+    background-image: linear-gradient(109deg, #0f5a84 0%, #298277 100%);
+    font-size: 20px;
+  }
+
+  .btn a {
+    font-size: 20px;
+  }
+
+  #ranimg{
+    object-fit: contain;
+  }
+
+  #f_out{
+    position: relative;
+  }
+  #name_user{
+    position: absolute;
+    left: -150px;
+    top:-2px;
+    background-color: #2ab438;
+    border-radius: 5px;
+    border: white solid 2px;
+    padding: 5px 10px;
+    display: flex;
+  }
+
+  #img_name{
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 5px;
+  }
+
+  .logout-btn{
+    color: white;
+    font-size: 16px;
+    background-color: #37aba7;
+    border: white solid 2px;
+    border-radius: 2px;
+    padding: 5px 10px !important;
+    z-index: 10;
+  }

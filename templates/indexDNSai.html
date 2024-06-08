@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game game</title>
+        <!-- Link thư viện CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+        <!-- CSS tùy chỉnh -->
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                height: 100vh;
+                width: 100vw;
+                background-color: #0f5a84;
+                background-image: linear-gradient(
+                    109deg,
+                    #0f5a84 0%,
+                    #298277 100%
+                );
+            }
+            .form-control {
+                margin-bottom: 20px;
+            }
+            .btn-login,
+            .btn-register {
+                width: 100%;
+            }
+            header {
+                padding-top: 15vh;
+                padding-bottom: 5vh;
+            }
+            header > h1 {
+                color: white;
+                font-size: 45px;
+            }
+            .form-group.dn label {
+                color: white;
+            }
+            #btn_dang_nhap {
+                margin-bottom: 2vh;
+            }
+            #registerModalLabel,
+            #btn_dang_ky {
+                text-align: center;
+                /* background-color: #0f5a84; */
+                width: 100%;
+            }
+            #registerModalLabel {
+                margin-left: 20px;
+                font-size: 26px;
+            }
+            #btn_dang_ky {
+                max-width: 250px;
+                font-size: 20px;
+            }
+            #chua_btn_dk {
+                display: flex;
+                justify-content: center;
+            }
+            .dnsai {
+                color: #ee8383;
+                font-size: 17px;
+                padding-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1 class="text-center">Game game gameMing</h1>
+            </header>
+            <div class="row justify-content-md-center">
+                <div class="col-md-6">
+                    <form
+                        method="post"
+                        action="auth/login"
+                        enctype="application/json"
+                    >
+                        <div class="form-group dn">
+                            <label for="username">Tên người dùng:</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="username"
+                                name="username"
+                                placeholder="Nhập tên người dùng"
+                            />
+                        </div>
+                        <div class="form-group dn">
+                            <label for="password">Mật khẩu:</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Nhập mật khẩu"
+                            />
+                        </div>
+                        <div class="dnsai">
+                            Tên đăng nhập hoặc mật khẩu k đúng, vui lòng đăng
+                            nhập lại
+                        </div>
+                        <button
+                            id="btn_dang_nhap"
+                            type="submit"
+                            class="btn btn-primary btn-login"
+                        >
+                            Đăng nhập
+                        </button>
+                    </form>
+                    <button
+                        type="button"
+                        class="btn btn-success btn-register"
+                        data-toggle="modal"
+                        data-target="#registerModal"
+                    >
+                        Đăng ký
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Đăng ký -->
+        <div
+            class="modal fade"
+            id="registerModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="registerModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">
+                            Đăng ký
+                        </h5>
+                        <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registrationForm">
+                            <div class="form-group">
+                                <label for="fullname">Họ và tên:</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fullname"
+                                    placeholder="Nhập họ và tên"
+                                    name="fullname"
+                                   
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="email"
+                                    placeholder="Nhập địa chỉ email"
+                                    name="email"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="new-username">Tên đăng nhập:</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="new-username"
+                                    placeholder="Nhập tên đăng nhập"
+                                    name="username"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">Mật khẩu:</label>
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="new-password"
+                                    placeholder="Nhập mật khẩu"
+                                    name="password"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password"
+                                    >Xác nhận mật khẩu:</label
+                                >
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="confirm-password"
+                                    placeholder="Nhập lại mật khẩu"
+                                />
+                            </div>
+                            <div id="chua_btn_dk">
+                                <button
+                                    id="btn_dang_ky"
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >
+                                    Đăng ký
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const userCookie = getCookie("user");
+                const passCookie = getCookie("pass");
+                if (userCookie && passCookie) {
+                    console.log(`===>OKE: `, userCookie, passCookie);
+                    const postData = {
+                        username: userCookie,
+                        password: passCookie,
+                    };
+                    // Tùy chọn cho yêu cầu POST
+                    const requestOptions = {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json", // Loại dữ liệu gửi đi là JSON
+                        },
+                        body: JSON.stringify(postData), // Chuyển đổi dữ liệu sang JSON trước khi gửi
+                    };
+
+                    // Thực hiện yêu cầu POST sử dụng fetch
+                    fetch("/auth/loginat", requestOptions)
+                        .then((response) => {
+                            if (response.ok) {
+                                console.log("Đăng nhập thành công!");
+                                window.location.href = "/choosegame";
+                            } else {
+                                console.error("Đăng nhập thất bại!");
+                            }
+                        })
+                        .catch((error) => {
+                            console.error("Lỗi khi gửi yêu cầu:", error);
+                        });
+                } else {
+                    console.log('Không tìm thấy cookie "user" hoặc "pass"');
+                }
+                // Hàm lấy giá trị của cookie
+                function getCookie(name) {
+                    const cookies = document.cookie.split(";");
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.startsWith(name + "=")) {
+                            return decodeURIComponent(
+                                cookie.substring(name.length + 1)
+                            );
+                        }
+                    }
+                    return null;
+                }
+
+                // Xử lý sự kiện submit của form đăng ký
+            const form = document.getElementById("registrationForm");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Ngăn chặn hành động gửi mặc định
+                var pass = document.getElementById("new-password").value
+                var repass = document.getElementById("confirm-password").value
+                if (pass!= repass) {
+                    alert("mật khẩu nhập lại không khớp");
+                    event.preventDefault();
+                }else{
+                    const formData = {
+                    fullname: document.getElementById("fullname").value,
+                    username: document.getElementById("new-username").value,
+                    password: document.getElementById("new-password").value,
+                    email: document.getElementById("email").value
+                };
+
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                };
+
+                fetch("/users/newuser", requestOptions)
+                    .then(response => response.text())
+                    .then(response => {
+                        // Xử lý phản hồi thành công
+                        document.body.innerHTML = response;
+                    })
+                    .catch(error => {
+                        // Xử lý lỗi
+                        console.error('Đăng ký thất bại:', error);
+                        alert('Đăng ký thất bại!');
+                    });
+                }
+                
+            });
+        });
+        </script>
+
+        <!-- Link thư viện JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

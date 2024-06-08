@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game game</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chosegame.css') }}" />
+    </head>
+    <body>
+
+        <header>
+            <img src="static/images/tay_game.jpg" alt="Logo" />
+            <h1>Please select your game</h1>
+            <form id="f_out" action="auth/logout" method="post">
+              <div id="name_user">
+                <img id="img_name" src="static/images/user.png" alt="">
+                <div id="chu">Name pro</div>
+              </div>
+              <button class="logout-btn" type="submit">Đăng Xuất</button>
+            </form>
+          </header>
+        
+          <main>
+            <div class="rowgame">
+              <div class="card">
+                <img id="ranimg" src="static/images/ran.png" alt="Game 1" />
+                <div class="card-content">
+                  <h2 class="card-title">Trò chơi con Rắn</h2>
+                  <p class="card-description">
+                    Lãnh đạo chú rắn nhỏ vượt qua muôn vàn thử thách để tới với trái táo
+                  </p>
+                  <div class="chua_btn">
+                    <a href="/games/ran" class="btn">Select</a>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="card">
+                <img src="static/images/caro.png" alt="Game 1" />
+                <div class="card-content">
+                  <h2 class="card-title">Game caro</h2>
+                  <p class="card-description">
+                    CỜ CARO - Chiến đấu song song, xuyên không internet 
+                  </p>
+                  <div class="chua_btn"><a href="/games/caro" class="btn">Select</a></div>
+                </div>
+              </div>
+        
+              <!-- <div class="card">
+                <img src="static/img/1.jpg" alt="Game 1" />
+                <div class="card-content">
+                  <h2 class="card-title">Game 1 Game 1 Game 1 Game 1</h2>
+                  <p class="card-description">
+                    Description of Game 1. Description of Game 1. Description of Game
+                    1. Description of Game 1. Description of Game 1.
+                  </p>
+                  <div class="chua_btn"><a href="#" class="btn">Select</a></div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="rowgame">
+              <div class="card">
+                <img src="static/img/1.jpg" alt="Game 1" />
+                <div class="card-content">
+                  <h2 class="card-title">Game 1 Game 1 Game 1 Game 1</h2>
+                  <p class="card-description">
+                    Description of Game 1. Description of Game 1. Description of Game
+                    1. Description of Game 1. Description of Game 1.
+                  </p>
+                  <div class="chua_btn"><a href="#" class="btn">Select</a></div> -->
+                </div>
+              </div>
+        
+            </div>
+          </main>
+
+
+
+        <script src="{{ url_for('static', filename='js/chosegame.js') }}"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const userCookie = getCookie("user");
+                const passCookie = getCookie("pass");
+                const fullNameCookie = getCookie("fullname");
+                // console.log(userCookie, passCookie, x);
+
+                const formData = {
+                    fullname:fullNameCookie
+                }
+                const requestOptions = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                };
+
+                fetch("/users/fullname", requestOptions)
+                    .then(response => response.text())
+                    .then(response => {
+                        // Xử lý phản hồi thành công
+                      // alert(response);
+                      document.getElementById("chu").innerText = response;
+                      setCookie('namedisplay', response, 1);  
+                    })
+                    .catch(error => {
+                      console.log("Lấy tên chuẩn bị lỗi")
+                    });
+                
+            
+                if (userCookie == undefined || passCookie == undefined) {
+                    console.log('Không tìm thấy cookie "user" hoặc "pass"');
+                    window.location.href = "/";
+                }
+
+                function setCookie(name, value, days) {
+                    var expires = "";
+                    if (days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                        expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                }
+
+                // Hàm lấy giá trị của cookie
+                function getCookie(name) {
+                    const cookies = document.cookie.split(";");
+                    for (let cookie of cookies) {
+                        cookie = cookie.trim();
+                        if (cookie.startsWith(name + "=")) {
+                            return decodeURIComponent(
+                                cookie.substring(name.length + 1)
+                            );
+                        }
+                    }
+                    return null;
+                }
+            });
+        </script>
+    </body>
+</html>
+

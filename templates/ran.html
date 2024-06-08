@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/static/game/ran/styleSnake2.css" />
+    <link href="/static/game/ran/Image/logo.jpg" rel="shortcut icon" />
+  </head>
+  <body>
+    <h1 id="title-level" style="display: none"></h1>
+    <button id="imageButton" style="display: none"></button>
+    <div id="setting">
+      <div class="header" id="header-setting"></div>
+      <input type="checkbox" id="music-setting-checkbox" />
+      <h2 style="display: inline">Sound</h2>
+      <button
+        class="rules-button"
+        id="rulesbutton"
+        style="display: inline; float: right"
+      >
+        Rules
+      </button>
+      <div
+        class="slider-container"
+        style="font-size: 28px; margin-bottom: 24px"
+      >
+        <label for="speed-slider-setting" style="font-weight: bold"
+          >Speed:</label
+        >
+        <input
+          type="range"
+          id="speed-slider-setting"
+          name="speed-slider"
+          min="1"
+          max="5"
+          value="3"
+          oninput="updateSpeedSetting(this.value)"
+        />
+        <span id="speed-label-setting">3</span>
+      </div>
+      <div class="button-group">
+        <button class="home-button" id="homebutton">Home</button>
+        <button class="reset-button" id="resetbutton">Try again</button>
+        <button class="continue-button" id="continuebutton">Continue</button>
+        <button class="next-level-button" id="nextlevel">Next Level</button>
+      </div>
+    </div>
+    <div id="rulesdiv">
+      <h1
+        class="header"
+        id="level-header"
+        style="font-family: 'VT323', monospace; font-size: 30px"
+      ></h1>
+      <div
+        id="rules-text"
+        style="font-family: 'VT323', monospace; font-size: 24px"
+      ></div>
+      <button class="rules-ok" id="rulesok">Ok</button>
+    </div>
+    <div id="overlay"></div>
+    <div id="start-screen">
+      <h1 style="font-size: 6vh">Welcome to Snake Game</h1>
+      <label style="margin-bottom: 24px">
+        <input type="checkbox" id="music-checkbox" />
+        <h2 style="display: inline">Sound</h2>
+      </label>
+      <div class="slider-container" style="font-size: 28px">
+        <label for="speed-slider" style="font-weight: bold">Speed:</label>
+        <input
+          type="range"
+          id="speed-slider"
+          name="speed-slider"
+          min="1"
+          max="5"
+          value="3"
+          oninput="updateSpeed(this.value)"
+        />
+        <span id="speed-label">3</span>
+      </div>
+      <h2 style="font-size: 5vh">Please select a level of difficulty:</h2>
+      <div class="button-container">
+        <button class="level-button" data-level="1" id="beginner-button">
+          Level 1
+        </button>
+        <button class="level-button" data-level="2" id="easy-button">
+          Level 2
+        </button>
+        <button class="level-button" data-level="3" id="intermediate-button">
+          Level 3
+        </button>
+        <button class="level-button" data-level="4" id="hard-button">
+          Level 4
+        </button>
+        <button
+          class="level-button"
+          data-level="5"
+          id="expert-button"
+          style="position: relative"
+        >
+          Level 5
+          <a href="/choosegame" id="quit_ran" class="level-button">Quit game </a>
+        </button>
+        <button class="level-button" data-level="6" id="extreme-button">
+          Level 6
+        </button>
+      </div>
+    </div>
+    <!-- <button id="start-button" style="font-size: 6vh;">Start Game</button> -->
+    <!-- </div> -->
+    <div id="boardgame" style="display: none">
+      <div style="position: relative">
+        <div id="timer-container" style="display: none; float: left">
+          <div id="timer-bar"></div>
+          <div class="timer-label">Health</div>
+        </div>
+        <h2
+          id="numscore"
+          style="display: inline; float: right; padding-left: 10px"
+        >
+          Apples:
+          <div id="score" style="display: inline"></div>
+          <img
+            src="/static/game/ran/Image/food.png"
+            alt="food"
+            style="max-width: 100%; max-height: 24px"
+          />
+        </h2>
+        <h2
+          id="labelTimeGame"
+          style="display: none; float: left; padding-left: 20px"
+        >
+          Left Time:
+          <div id="time-game" style="display: inline">s</div>
+        </h2>
+
+        <h2 id="fruits" style="display: none; float: right">
+          <div id="fruit-game" style="display: inline"></div>
+        </h2>
+        <div class="lifeTime">
+          <h2
+            id="time-lable-fruits"
+            style="display: none; float: right; padding-right: 20px"
+          >
+            LifeTime:
+            <div id="time-fruits" style="display: inline"></div>
+          </h2>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="/static/game/ran/scriptSnake2.js"></script>
+  </body>
+</html>
