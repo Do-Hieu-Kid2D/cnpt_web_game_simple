@@ -124,7 +124,7 @@ def on_leave(data):
     emit('leave', {'room_code': room_code, 'player': player, 'request_sid': request.sid, 'players': rooms[room_code]['players']}, room=room_code)
 
     global_player_count -= 1
-
+    
 
 # Cập nhật các bước đánh của người chơi
 @socketio.on('playerMove')

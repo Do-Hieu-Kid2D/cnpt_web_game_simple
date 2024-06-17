@@ -127,4 +127,5 @@ body {
     border-radius: 2px;
     padding: 5px 10px !important;
     z-index: 10;
+    cursor: pointer;
   }

@@ -294,19 +294,43 @@ function getCookie(name) {
     return null; // Trả về null nếu cookie không tồn tại
 }
 
-document.getElementById("chat-form").addEventListener('submit', function(e){
+const chatForm = document.getElementById("chat-form");
+const chatInput = document.getElementById("chat-message");
+
+chatForm.addEventListener('submit', function(e){
     e.preventDefault();
     let input = document.getElementById("chat-message");
     const username = getCookie('namedisplay');
     if (input.value) {
         var messageData = {
-            msg: input.value,
-            username: username
+        msg: input.value,
+        username: username
         };
         socket.send(messageData);
         input.value = '';
+        chatInput.focus();
     } else {
         alert("Please enter your message.");
     }
 });
-
+                
+                
+chatInput.addEventListener("keydown", function(event) {
+if (event.key === "Enter") {
+    console.log("neww message: " + event.target.value);
+    event.preventDefault();
+    let input = document.getElementById("chat-message");
+    const username = getCookie('namedisplay');
+    if (input.value) {
+        var messageData = {
+        msg: input.value,
+        username: username
+        };
+        socket.send(messageData);
+        input.value = '';
+        chatInput.focus();
+    } else {
+        alert("Please enter your message.");
+    }
+}
+});
